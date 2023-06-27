@@ -1,0 +1,10 @@
+# Git Ignore File - Altium Projects
+
+# Altium thumbnail files
+**/__Previews/
+# Altium backup archives
+**/History/
+# Altium metadata file
+*.PcbDoc.htm
+# Ignore File with logs
+**/Project Logs for AQM with ESP32-C3/

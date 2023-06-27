@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LED Control</title>
+</head>
+<body>
+    <h1>LED Control</h1>
+    <button onclick="sendCommand('on')">LED On</button>
+    <button onclick="sendCommand('off')">LED Off</button>
+
+    <script>
+        // Define the Pub/Sub topic to publish commands
+        const pubsubTopic = 'led-control-topic';
+
+        // Function to send a command to the ESP32 through GCP Pub/Sub
+        function sendCommand(command) {
+            const message = { command: command };
+            const payload = JSON.stringify(message);
+
+            fetch('/publish', {
+                method: 'POST',
+                body: payload
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Command sent successfully');
+                } else {
+                    console.error('Failed to send command');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
