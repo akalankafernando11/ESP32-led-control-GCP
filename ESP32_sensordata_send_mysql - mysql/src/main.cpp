@@ -41,7 +41,7 @@ void connectToMQTTBroker() {
     Serial.println("Connecting to MQTT broker...");
     if (mqttClient.connect("ESP32Client", mqttUsername, mqttPassword)) {
       Serial.println("Connected to MQTT broker!");
-      mqttClient.subscribe("led_control_topic");
+      mqttClient.subscribe("/projects/artful-guru-390609/topics/LED-ON-OFF");
     } else {
       Serial.print("MQTT connection failed. Error code = ");
       Serial.println(mqttClient.state());
